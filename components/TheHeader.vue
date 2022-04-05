@@ -1,5 +1,11 @@
 <template>
-<h1>the header</h1>
+  <NuxtLink to="/">
+    EVENTS
+  </NuxtLink>
+  /
+  <NuxtLink to="/about">
+    ABOUT
+  </NuxtLink>
 </template>
 
 <script>

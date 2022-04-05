@@ -1,59 +1,16 @@
 <template>
-  <LazyMountainsList v-if="show" />
-  <button v-if="!show" @click="show = true">Show List</button>
   <div class="events">
-    <EventCard v-for="event in events" :key="event.id" :event="event" />
+    <h1 class="text-2xl">Event for Goods</h1>
+    <EventList :events="data.events" />
   </div>
 </template>
 
-<script>
-import EventCard from '../components/EventCard'
-export default {
-  name: "index",
-  components: {
-    EventCard
-  },
-  data() {
-    return {
-      show: false,
-      events: [
-        {
-          id: 5928101,
-          category: 'animal welfare',
-          title: 'Cat Adoption Day',
-          description: 'Find your new feline friend at this event.',
-          location: 'Meow Town',
-          date: 'January 28, 2022',
-          time: '12:00',
-          petsAllowed: true,
-          organizer: 'Kat Laydee'
-        },
-        {
-          id: 4582797,
-          category: 'food',
-          title: 'Community Gardening',
-          description: 'Join us as we tend to the community edible plants.',
-          location: 'Flora City',
-          date: 'March 14, 2022',
-          time: '10:00',
-          petsAllowed: true,
-          organizer: 'Fern Pollin'
-        },
-        {
-          id: 8419988,
-          category: 'sustainability',
-          title: 'Beach Cleanup',
-          description: 'Help pick up trash along the shore.',
-          location: 'Playa Del Carmen',
-          date: 'July 22, 2022',
-          time: '11:00',
-          petsAllowed: false,
-          organizer: 'Carey Wales'
-        }
-      ]
-    }
-  }
-}
+
+<script setup>
+import {useAsyncData} from "nuxt3/app";
+
+// const { data } = await useAsyncData('count', () => $fetch('/api/hello'))
+const { data } = await useAsyncData('user', () => $fetch('/api/events'))
 </script>
 
 <style scoped>
